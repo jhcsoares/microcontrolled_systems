@@ -1,4 +1,4 @@
-;;EXERCÍCIO 4
+	;;EXERCÍCIO 4
 	;MOV R0, #253 ;A
 	;ADDS R0, #101 ;A
 	
@@ -34,7 +34,7 @@
 	;MOV R1, #1000 ;G
 	;UDIV R0, R1 ;G
 	
-	;;EXERCÍCIO 2
+	;;EXERCÍCIO 5
 	;MOV R0, #10 ;A
 	
 	;CMP R0, #9 ;B
@@ -52,7 +52,7 @@
 		;ADDHS R2, R1, #32
 		;MOVLO R3, #75
 		
-	;;EXERCÍCIO 3
+	;;EXERCÍCIO 6
 	;MOV R0, #10 ;A
 	
 	;MOV R1, #0XCC22 ;B
@@ -79,33 +79,27 @@
 	;POP {R1} ;J
 	;POP {R0} ;J
 	
-	;EXERCICIO 4
+	;EXERCICIO 7
 	
-	MOV R0, #10 
+	MOV R0, #10
 	
-	ADD R0, R0, #5 
-	
-	CMP R0, #50 
-	BEQ ULTIMA
-	;BNE ADD_5
+ROUTINE1
+	ADD R0, R0, #5
+	CMP R0, #50
+	BLO ROUTINE1 
+	BL ROUTINE2
+FINAL
+	B FINAL
 
-ADD_5
-	ADD R0, R0, #5 
-	CMP R0, #50 
-	BNE ADD_5
-	BL FUNC
-ULTIMA
-	B ULTIMA
-
-FUNC
+ROUTINE2
 	MOV R1, R0
-	CMP R1, #50 
+	CMP R1, #50
 	ITE LO
 		ADDLO R1, R1, #1
 		MOVHS R1, #-50
-	
 	BX LR
-
+ 
+	;;FATORIAL
 	MOV R1, #5
 		
 	MOV R2, #0X0040
