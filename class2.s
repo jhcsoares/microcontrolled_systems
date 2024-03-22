@@ -106,6 +106,23 @@ FUNC
 	
 	BX LR
 
-	NOP
+	MOV R1, #5
+		
+	MOV R2, #0X0040
+	MOVT R2, #0X2000
+	
+	STR R1, [R2]
+	
+	MOV R1, #0
+	MOV R4, #1
+	
+FACTORIAL
+	ADD R1, R1, #1
+	MUL R4, R4, R1
+	LDR R3, [R2]
+	CMP R3, R1
+	BHI FACTORIAL
+
+    NOP
     ALIGN                           ; garante que o fim da seção está alinhada 
     END                             ; fim do arquivo
