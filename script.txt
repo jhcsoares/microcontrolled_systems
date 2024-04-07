@@ -1,0 +1,10 @@
+loop    
+    atualiza leds -> state in r2
+    le sw1 e sw2 -> guarda leitura em r1 
+    espera
+    atualiza ds2
+    espera 
+    atualiza ds1
+    espera
+
+    loop
