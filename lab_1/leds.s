@@ -202,7 +202,7 @@ UpdateLeds
 	LDR R4, =GPIO_PORTP_DATA_R
 	STR R3, [R4]
 	
-	MOV R0, #1
+	MOV R0, #10
 	PUSH {LR}
 	BL SysTick_Wait1ms
 	POP {LR}

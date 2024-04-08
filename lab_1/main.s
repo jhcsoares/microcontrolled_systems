@@ -11,8 +11,8 @@
 ; -------------------------------------------------------------------------------
 		
 ; Declarações EQU - Defines
-DS1_STATE					EQU	   0x20000404
-DS2_STATE					EQU	   0x20000405
+UNITY						EQU	   0x20000404
+TEN							EQU	   0x20000405
 GPIO_PORTP_DATA_R      		EQU    0x400653FC
 GPIO_PORTB_AHB_DATA_R       EQU    0x400593FC
 	
@@ -70,18 +70,15 @@ MainLoop
 	
 	BL Decoder
 	
-	LDR R0, =DS2_STATE			
+	LDR R0, =TEN			
 	LDRB R0, [R0]
 	MOV R5, #2_00010000
 	BL DecoderUpdate
 		
-	LDR R0, =DS1_STATE			
+	LDR R0, =UNITY			
 	LDRB R0, [R0]
 	MOV R5, #2_00100000 	
 	BL DecoderUpdate
-	
-	MOV R0, #100
-	BL SysTick_Wait1ms
 	
 	B MainLoop
 
