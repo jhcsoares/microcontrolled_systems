@@ -103,7 +103,7 @@ DecoderUpdate
 	LDR R4, =GPIO_PORTB_AHB_DATA_R
 	STR R5, [R4]
 	
-	MOV R0, #10
+	MOV R0, #1
 	PUSH {LR}
 	BL SysTick_Wait1ms
 	POP {LR}

@@ -13,6 +13,7 @@ USR_SW1_STATE			EQU	   0x20000402
 USR_SW2_STATE			EQU	   0x20000403
 DS1_STATE				EQU	   0x20000404
 DS2_STATE				EQU	   0x20000405
+UPDATE_FLAG				EQU	   0x20000406
 
 ; -------------------------------------------------------------------------------
 ; Área de Código - Tudo abaixo da diretiva a seguir será armazenado na memória de 
@@ -61,6 +62,11 @@ Decoder
 	
 	LDR R0, =DS1_STATE
 	LDR R1, =DS2_STATE
+
+	LDR R2, =UPDATE_FLAG
+	LDRB R3, [R2]
+	CMP R3, #0
+	BXEQ LR
 
 	STRB R7, [R0]
 	STRB R8, [R1]

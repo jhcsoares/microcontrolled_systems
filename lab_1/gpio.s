@@ -165,6 +165,8 @@ USR_SW2_STATE			EQU	   0x20000403
 		; Se alguma função do arquivo for chamada em outro arquivo	
         EXPORT GPIO_Init            ; Permite chamar GPIO_Init de outro arquivo
 		EXPORT PortJ_Input          ; Permite chamar PortJ_Input de outro arquivo
+		EXPORT PortJ_Interrupt
+		IMPORT SysTick_Wait1ms	
 
 ;--------------------------------------------------------------------------------
 ; Função GPIO_Init
@@ -288,8 +290,8 @@ EsperaGPIO  LDR     R1, [R0]						;Lê da memória o conteúdo do endereço do regis
 ; -------------------------------------------------------------------------------
 ; Função PortJ_Input
 ; Parâmetro de entrada: Não tem
-; Parâmetro de saída: UPDATE PORT J ADDRESSES ON RAM (0x20000402 [STEP] AND 0x20000403 [BACKFORWARD OR STRAIGHTFORWARD])
-PortJ_Input
+; Parâmetro de saída: UPDATE PORT J ADDRESSES ON RAM (0x20000402 [STEP] AND 0x20000403 [BACKWARD OR STRAIGHTFORWARD])
+PortJ_Input	
 	LDR	R2, =GPIO_PORTJ_AHB_DATA_R	
 	LDR R1, [R2]
 	
@@ -317,7 +319,35 @@ PortJ_Input
 		MULLO R4, R4, R5
 		STRBLO R4, [R3]
 	
-	BX LR									
+	BX LR			
+
+PortJ_Interrupt
+	LDR	R2, =GPIO_PORTJ_AHB_DATA_R	
+	
+	MOV R0, #10
+	PUSH {LR}
+	BL SysTick_Wait1ms
+	POP {LR}
+	
+	LDR R1, [R2]
+	
+	MOV R3, #0
+	
+	LSRS R1, R1, #1
+	IT LO ;BUTTON PRESSED
+		ADDLO R3, R3, #1
+	
+	LSRS R1, #1
+	LSRS R1, R1, #1
+	IT LO ;BUTTON PRESSED
+		ADDLO R3, R3, #1
+	
+	CMP R3, #0
+	PUSH {LR}
+	BLHI PortJ_Input
+	POP {LR}
+
+	BX LR
 
     ALIGN                           ; garante que o fim da seção está alinhada 
     END                             ; fim do arquivo

@@ -151,6 +151,7 @@ GPIO_PORTQ              EQU    2_100000000000000
 ;RAM
 LEDS_STATE				EQU	   0x20000400
 LEDS_INCREMENT			EQU	   0x20000401
+UPDATE_FLAG				EQU	   0x20000406
 
 ; -------------------------------------------------------------------------------
 ; Área de Código - Tudo abaixo da diretiva a seguir será armazenado na memória de 
@@ -202,7 +203,7 @@ UpdateLeds
 	LDR R4, =GPIO_PORTP_DATA_R
 	STR R3, [R4]
 	
-	MOV R0, #10
+	MOV R0, #1
 	PUSH {LR}
 	BL SysTick_Wait1ms
 	POP {LR}
@@ -218,6 +219,10 @@ UpdateLeds
 	POP {LR}
 		
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UPDATE STATE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	LDR R0, =UPDATE_FLAG
+	LDRB R1, [R0]
+	CMP R1, #0
+	BXEQ LR
 	
 	LDR R3, =LEDS_INCREMENT
 	LDR R4, =LEDS_STATE

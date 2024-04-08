@@ -21,11 +21,16 @@ GPIO_PORTQ_DATA_R           EQU     0x400663FC
 
 		; Se alguma função do arquivo for chamada em outro arquivo	
         EXPORT Timer
-		IMPORT SysTick_Wait1ms
 
 ;--------------------------------------------------------------------------------
 Timer
-	
+	MOV R11, #0X0000
+	MOVT R11, #0X0005
+	MOV R12, #0
+LOOP
+	ADD R12, R12, #1
+	CMP R12, R11
+	BLE LOOP
 	
 	BX LR
 		

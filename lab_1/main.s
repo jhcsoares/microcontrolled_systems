@@ -11,10 +11,13 @@
 ; -------------------------------------------------------------------------------
 		
 ; Declarações EQU - Defines
-UNITY						EQU	   0x20000404
-TEN							EQU	   0x20000405
+DS1_STATE					EQU	   0x20000404
+DS2_STATE					EQU	   0x20000405
 GPIO_PORTP_DATA_R      		EQU    0x400653FC
 GPIO_PORTB_AHB_DATA_R       EQU    0x400593FC
+UPDATE_FLAG					EQU	   0x20000406
+UPDATE_CURRENT_STATE		EQU	   0x2000040A
+UPDATE_MAX_STATE			EQU	   0x2000040E
 	
 ; ========================
 ; Definições de Valores
@@ -46,11 +49,12 @@ GPIO_PORTB_AHB_DATA_R       EQU    0x400593FC
 		IMPORT  SysTick_Wait1ms			
 		IMPORT  GPIO_Init
         IMPORT  PortJ_Input	
+		IMPORT  PortJ_Interrupt	
 		IMPORT 	UpdateLeds
 		IMPORT  RamInit
 		IMPORT  Decoder
 		IMPORT  DecoderUpdate
-
+			
 ; -------------------------------------------------------------------------------
 ; Função main()
 Start  			
@@ -66,21 +70,50 @@ MainLoop
 ; ****************************************
 	BL UpdateLeds
 	
-	BL PortJ_Input
+	;BL PortJ_Interrupt
 	
 	BL Decoder
 	
-	LDR R0, =TEN			
+	LDR R0, =DS2_STATE			
 	LDRB R0, [R0]
 	MOV R5, #2_00010000
 	BL DecoderUpdate
 		
-	LDR R0, =UNITY			
+	LDR R0, =DS1_STATE			
 	LDRB R0, [R0]
 	MOV R5, #2_00100000 	
 	BL DecoderUpdate
 	
+	LDR R11, =UPDATE_FLAG
+	MOV R12, #0
+	STR R12, [R11]
+	
+	;=====================================================================;
+	
+	LDR R9, =UPDATE_CURRENT_STATE
+	LDR R10, [R9]
+	ADD R10, R10, #1
+	STR R10, [R9]
+	
+	LDR R11, =UPDATE_MAX_STATE
+	LDR R12, [R11]
+	CMP R10, R12
+	BLO MainLoop
+	
+	LDR R11, =UPDATE_CURRENT_STATE
+	MOV R12, #0
+	STR R12, [R11]
+	
+	LDR R11, =UPDATE_FLAG
+	MOV R12, #1
+	STR R12, [R11]
+	
+	BL PortJ_Input	
+	
 	B MainLoop
+	
+	ALIGN                           ; garante que o fim da seção está alinhada 
+    END  
 
 ;-----------------------------------------------------------------------------------
 ; Fim do Arquivo

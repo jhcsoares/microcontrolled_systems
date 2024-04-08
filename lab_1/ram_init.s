@@ -15,6 +15,9 @@ USR_SW1_STATE			EQU	   0x20000402
 USR_SW2_STATE			EQU	   0x20000403
 DS1_STATE				EQU	   0x20000404
 DS2_STATE				EQU	   0x20000405
+UPDATE_FLAG				EQU	   0x20000406
+UPDATE_CURRENT_STATE	EQU	   0x2000040A
+UPDATE_MAX_STATE		EQU	   0x2000040E
 ; -------------------------------------------------------------------------------
 ; Área de Código - Tudo abaixo da diretiva a seguir será armazenado na memória de 
 ;                  código
@@ -47,6 +50,19 @@ RamInit
 	LDR R0, =DS2_STATE
 	MOV R1, #0 ;FORWARD
 	STRB R1, [R0]
+	
+	LDR R0, =UPDATE_FLAG
+	MOV R1, #0 ;DONT UPDATE
+	STRB R1, [R0]
+	
+	LDR R0, =UPDATE_CURRENT_STATE
+	MOV R1, #0 
+	STR R1, [R0]
+	
+	LDR R0, =UPDATE_MAX_STATE
+	MOV R1, #0X0090
+	MOVT R1, #0X0000
+	STR R1, [R0]
 	
 	BX LR
 	
