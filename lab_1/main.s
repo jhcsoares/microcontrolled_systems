@@ -70,8 +70,6 @@ MainLoop
 ; ****************************************
 	BL UpdateLeds
 	
-	;BL PortJ_Interrupt
-	
 	BL Decoder
 	
 	LDR R0, =DS2_STATE			
