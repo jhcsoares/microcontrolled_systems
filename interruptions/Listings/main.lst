@@ -1,0 +1,184 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; main.s
+    2 00000000         ; Desenvolvido para a placa EK-TM4C1294XL
+    3 00000000         ; Prof. Guilherme Peron
+    4 00000000         ; Rev1: 10/03/2018
+    5 00000000         ; Rev2: 10/04/2019
+    6 00000000         ; Este programa espera o usuário apertar a chave USR_SW1
+                        e/ou a chave USR_SW2.
+    7 00000000         ; Caso o usuário pressione a chave USR_SW1, acenderá o L
+                       ED3 (PF4). Caso o usuário pressione 
+    8 00000000         ; a chave USR_SW2, acenderá o LED4 (PF0). Caso as duas c
+                       haves sejam pressionadas, os dois 
+    9 00000000         ; LEDs acendem.
+   10 00000000         
+   11 00000000         ; ------------------------------------------------------
+                       -------------------------
+   12 00000000                 THUMB                        ; Instruções do tip
+                                                            o Thumb-2
+   13 00000000         ; ------------------------------------------------------
+                       -------------------------
+   14 00000000         ; Declarações EQU - Defines
+   15 00000000         ;<NOME>         EQU <VALOR>
+   16 00000000         ; ========================
+   17 00000000         
+   18 00000000         
+   19 00000000         ; ------------------------------------------------------
+                       -------------------------
+   20 00000000         ; Área de Dados - Declarações de variáveis
+   21 00000000                 AREA             DATA, ALIGN=2
+   22 00000000         ; Se alguma variável for chamada em outro arquivo
+   23 00000000         ;EXPORT  <var> [DATA,SIZE=<tam>]   ; Permite chamar a va
+                       riável <var> a 
+   24 00000000         ; partir de outro arquivo
+   25 00000000         ;<var> SPACE <tam>                        ; Declara uma 
+                       variável de nome <var>
+   26 00000000         ; de <tam> bytes a partir da primeira 
+   27 00000000         ; posição da RAM  
+   28 00000000         
+   29 00000000         ; ------------------------------------------------------
+                       -------------------------
+   30 00000000         ; Área de Código - Tudo abaixo da diretiva a seguir será
+                        armazenado na memória de 
+   31 00000000         ;                  código
+   32 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+2
+   33 00000000         
+   34 00000000         ; Se alguma função do arquivo for chamada em outro arqui
+                       vo 
+   35 00000000                 EXPORT           Start       ; Permite chamar a 
+                                                            função Start a part
+                                                            ir de 
+   36 00000000         ; outro arquivo. No caso startup.s
+   37 00000000         
+   38 00000000         ; Se chamar alguma função externa 
+   39 00000000         ;IMPORT <func>              ; Permite chamar dentro dest
+                       e arquivo uma 
+   40 00000000         ; função <func>
+   41 00000000                 IMPORT           GPIO_Init
+   42 00000000                 IMPORT           PortJ_Input
+   43 00000000                 IMPORT           GPIOPortJ_Handler
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   44 00000000                 IMPORT           Interrupt_Init
+   45 00000000         
+   46 00000000         ; ------------------------------------------------------
+                       -------------------------
+   47 00000000         ; Função main()
+   48 00000000         Start
+   49 00000000 F7FF FFFE       BL               GPIO_Init   ;Chama a subrotina 
+                                                            que inicializa os G
+                                                            PIO
+   50 00000004 F7FF FFFE       BL               Interrupt_Init
+   51 00000008         
+   52 00000008         MainLoop
+   53 00000008         
+   54 00000008 E7FE            B                MainLoop    ;Volta para o laço 
+                                                            principal 
+   55 0000000A         
+   56 0000000A         
+   57 0000000A 00 00           ALIGN                        ;Garante que o fim 
+                                                            da seção está alinh
+                                                            ada 
+   58 0000000C                 END                          ;Fim do arquivo
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -IC:\Users\DAELN\Downloads\
+GPIO1\RTE -IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C129 -IC:
+\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_V
+ERSION SETA 518" --predefine="TM4C1294NCPDT SETA 1" --list=.\listings\main.lst 
+main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATA 00000000
+
+Symbol: DATA
+   Definitions
+      At line 21 in file main.s
+   Uses
+      None
+Comment: DATA unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 32 in file main.s
+   Uses
+      None
+Comment: .text unused
+MainLoop 00000008
+
+Symbol: MainLoop
+   Definitions
+      At line 52 in file main.s
+   Uses
+      At line 54 in file main.s
+Comment: MainLoop used once
+Start 00000000
+
+Symbol: Start
+   Definitions
+      At line 48 in file main.s
+   Uses
+      At line 35 in file main.s
+Comment: Start used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+GPIOPortJ_Handler 00000000
+
+Symbol: GPIOPortJ_Handler
+   Definitions
+      At line 43 in file main.s
+   Uses
+      None
+Comment: GPIOPortJ_Handler unused
+GPIO_Init 00000000
+
+Symbol: GPIO_Init
+   Definitions
+      At line 41 in file main.s
+   Uses
+      At line 49 in file main.s
+Comment: GPIO_Init used once
+Interrupt_Init 00000000
+
+Symbol: Interrupt_Init
+   Definitions
+      At line 44 in file main.s
+   Uses
+      At line 50 in file main.s
+Comment: Interrupt_Init used once
+PortJ_Input 00000000
+
+Symbol: PortJ_Input
+   Definitions
+      At line 42 in file main.s
+   Uses
+      None
+Comment: PortJ_Input unused
+4 symbols
+342 symbols in table
