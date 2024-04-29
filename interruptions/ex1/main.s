@@ -26,18 +26,24 @@
 		; Se alguma função do arquivo for chamada em outro arquivo	
         EXPORT Start                ; Permite chamar a função Start a partir de 
 			                        ; outro arquivo. No caso startup.s
-									
-		IMPORT GPIO_Init
+
 									
 		; Se chamar alguma função externa	
         ;IMPORT <func>              ; Permite chamar dentro deste arquivo uma 
 									; função <func>
+		
+		IMPORT GPIO_Init
+		IMPORT Interrupt_Init
 
 ; -------------------------------------------------------------------------------
 ; Função main()
 Start  
 	BL GPIO_Init
-; Comece o código aqui <======================================================
-
+	BL Interrupt_Init
+	
+MainLoop
+	
+	B MainLoop
+	
     ALIGN                           ; garante que o fim da seção está alinhada 
     END                             ; fim do arquivo

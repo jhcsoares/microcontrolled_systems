@@ -1,0 +1,444 @@
+; gpio.s
+; Desenvolvido para a placa EK-TM4C1294XL
+; João Henrique - Denise
+; 19/03/2018
+
+; -------------------------------------------------------------------------------
+        THUMB                        ; Instruções do tipo Thumb-2
+; -------------------------------------------------------------------------------
+; Declarações EQU - Defines
+; ========================
+GPIO_PORTA_AHB_DATA_R       EQU    0x400583FC
+GPIO_PORTP_DATA_R       	EQU    0x400653FC
+GPIO_PORTQ_DATA_R       	EQU    0x400663FC
+	
+	;RAM
+MAIN_STATE				EQU	   0X2000041C
+LCD_CHAR				EQU	   0x20000401
+LCD_NEW_WORD			EQU	   0x20000402
+LCD_CHAR_COUNTER		EQU	   0x20000403
+KEYBOARD_DIGIT			EQU	   0x20000404
+USER_PASSWORD_P1		EQU	   0X20000405
+USER_PASSWORD_P2		EQU	   0X20000406
+USER_PASSWORD_P3		EQU	   0X20000407
+USER_PASSWORD_P4		EQU	   0X20000408
+LOGIN_USER_PASSWORD_P1	EQU	   0X20000409
+LOGIN_USER_PASSWORD_P2	EQU	   0X2000040A
+LOGIN_USER_PASSWORD_P3	EQU	   0X2000040B
+LOGIN_USER_PASSWORD_P4	EQU	   0X2000040C
+LOGIN_ATTEMPTS			EQU	   0X2000040D
+GOTO_STATE_5_B			EQU	   0X2000040E
+MASTER_PASSWORD_P1		EQU	   0X2000040F
+MASTER_PASSWORD_P2		EQU	   0X20000410
+MASTER_PASSWORD_P3		EQU	   0X20000411
+MASTER_PASSWORD_P4		EQU	   0X20000412
+USER_PASSWORD_SET_P1	EQU	   0X20000413
+USER_PASSWORD_SET_P2	EQU	   0X20000414
+USER_PASSWORD_SET_P3	EQU	   0X20000415
+USER_PASSWORD_SET_P4	EQU	   0X20000416
+MASTER_PASSWORD_SET_P1	EQU	   0X20000417
+MASTER_PASSWORD_SET_P2	EQU	   0X20000418
+MASTER_PASSWORD_SET_P3	EQU	   0X20000419
+MASTER_PASSWORD_SET_P4	EQU	   0X2000041A
+GOTO_STATE_5_D			EQU	   0X2000041B
+
+; -------------------------------------------------------------------------------
+; Área de Código - Tudo abaixo da diretiva a seguir será armazenado na memória de 
+;                  código
+        AREA    |.text|, CODE, READONLY, ALIGN=2
+
+		; Se alguma função do arquivo for chamada em outro arquivo	
+		EXPORT State_5_a
+		EXPORT State_5_b
+		EXPORT State_5_c
+		EXPORT State_5_d
+			
+		IMPORT State_0_Msg
+		IMPORT State_2_Msg
+		IMPORT State_3_Msg
+		IMPORT State_5_a_Msg
+		IMPORT State_5_b_Msg
+		IMPORT State_5_c_Msg
+		IMPORT State_5_d_Msg
+		IMPORT LCD_Print_Char
+		IMPORT Keyboard_Read
+		IMPORT SysTick_Wait1ms
+
+State_5_a
+	LDR R10, =State_5_a_Msg
+	LDR R11, =LCD_NEW_WORD
+	MOV R12, #1
+	STRB R12, [R11]
+
+State_5_a_Print_Msg
+	LDRB R1, [R10], #1
+	CMP R1, #0
+	BEQ State_5_a_Final
+	LDR R2, =LCD_CHAR
+	STRB R1, [R2]
+	
+	PUSH {LR}
+	BL LCD_Print_Char
+	POP {LR}
+	
+	B State_5_a_Print_Msg
+
+State_5_a_Final
+	LDR R0, =GOTO_STATE_5_D
+	LDRB R0, [R0]
+	
+	CMP R0, #1
+	ITTTT EQ
+		LDREQ R0, =MAIN_STATE
+		MOVEQ R1, #8
+		STRBEQ R1, [R0]
+		BXEQ LR
+	
+	LDR R0, =GPIO_PORTA_AHB_DATA_R
+	MOV R1, #2_11110000
+	STR R1, [R0]
+	
+	LDR R0, =GPIO_PORTQ_DATA_R
+	MOV R1, #2_00001111
+	STR R1, [R0]
+	
+	LDR R0, =GPIO_PORTP_DATA_R
+	MOV R1, #2_00100000
+	STR R1, [R0]
+	
+	MOV R0, #100
+	PUSH {LR}
+	BL SysTick_Wait1ms
+	POP {LR}
+	
+	LDR R0, =GPIO_PORTP_DATA_R
+	MOV R1, #2_00000000
+	STR R1, [R0]
+	
+	MOV R0, #100
+	PUSH {LR}
+	BL SysTick_Wait1ms
+	POP {LR}
+	
+	B State_5_a_Final
+
+State_5_b
+	LDR R0, =GOTO_STATE_5_B
+	MOV R1, #0
+	STRB R1, [R0]
+	
+	LDR R10, =State_5_b_Msg
+	LDR R11, =LCD_NEW_WORD
+	MOV R12, #1
+	STRB R12, [R11]
+
+State_5_b_Print_Msg
+	LDRB R1, [R10], #1
+	CMP R1, #0
+	BEQ State_5_b_Intermediate
+	LDR R2, =LCD_CHAR
+	STRB R1, [R2]
+	
+	PUSH {LR}
+	BL LCD_Print_Char
+	POP {LR}
+	
+	B State_5_b_Print_Msg
+
+State_5_b_Intermediate
+	PUSH {LR}
+	BL Keyboard_Read
+	POP {LR}
+	
+	LDR R0, =KEYBOARD_DIGIT
+	LDRB R1, [R0]
+	
+	CMP R1, #0
+	BEQ State_5_b_Intermediate
+	
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+	CMP R1, #'#'
+	BEQ State_5_b_Final
+	
+	
+	
+	LDR R3, =MASTER_PASSWORD_P1
+	LDR R0, =MASTER_PASSWORD_SET_P1
+	LDRB R2, [R0]
+	CMP R2, #0
+	MOVEQ R4, #1
+	STRBEQ R4, [R0]
+	STRBEQ R1, [R3]
+	BEQ State_5_b_Intermediate
+	
+	LDR R3, =MASTER_PASSWORD_P2
+	LDR R0, =MASTER_PASSWORD_SET_P2
+	LDRB R2, [R0]
+	CMP R2, #0
+	MOVEQ R4, #1
+	STRBEQ R4, [R0]
+	STRBEQ R1, [R3]
+	BEQ State_5_b_Intermediate
+	
+	LDR R3, =MASTER_PASSWORD_P3
+	LDR R0, =MASTER_PASSWORD_SET_P3
+	LDRB R2, [R0]
+	CMP R2, #0
+	MOVEQ R4, #1
+	STRBEQ R4, [R0]
+	STRBEQ R1, [R3]
+	BEQ State_5_b_Intermediate
+	
+	LDR R3, =MASTER_PASSWORD_P4
+	LDR R0, =MASTER_PASSWORD_SET_P4
+	LDRB R2, [R0]
+	CMP R2, #0
+	MOVEQ R4, #1
+	STRBEQ R4, [R0]
+	STRBEQ R1, [R3]
+	BEQ State_5_b_Intermediate
+	
+	B State_5_b_Intermediate
+	
+State_5_b_Final
+	LDR R0, =MAIN_STATE
+	MOV R1, #2
+	STRB R1, [R0]
+	
+	BX LR
+
+
+State_5_c
+	LDR R10, =State_5_c_Msg
+	LDR R11, =LCD_NEW_WORD
+	MOV R12, #1
+	STRB R12, [R11]
+
+State_5_c_Print_Msg
+	LDRB R1, [R10], #1
+	CMP R1, #0
+	BEQ State_5_c_Final
+	LDR R2, =LCD_CHAR
+	STRB R1, [R2]
+	
+	PUSH {LR}
+	BL LCD_Print_Char
+	POP {LR}
+	
+	B State_5_c_Print_Msg
+
+State_5_c_Final
+	MOV R0, #5000
+	PUSH {LR}
+	BL SysTick_Wait1ms
+	POP {LR}
+	
+	LDR R0, =MAIN_STATE
+	MOV R1, #0
+	STRB R1, [R0]
+	
+	BX LR
+
+State_5_d
+	MOV R1, #0
+	LDR R0, =LOGIN_USER_PASSWORD_P1
+	STRB R1, [R0]
+	LDR R0, =LOGIN_USER_PASSWORD_P2
+	STRB R1, [R0]
+	LDR R0, =LOGIN_USER_PASSWORD_P3
+	STRB R1, [R0]
+	LDR R0, =LOGIN_USER_PASSWORD_P4
+	STRB R1, [R0]
+	
+	LDR R10, =State_5_d_Msg
+	LDR R11, =LCD_NEW_WORD
+	MOV R12, #1
+	STRB R12, [R11]
+
+State_5_d_Print_Msg
+	LDRB R1, [R10], #1
+	CMP R1, #0
+	BEQ State_5_d_Intermediate
+	LDR R2, =LCD_CHAR
+	STRB R1, [R2]
+	
+	PUSH {LR}
+	BL LCD_Print_Char
+	POP {LR}
+	
+	B State_5_d_Print_Msg
+
+State_5_d_Intermediate	
+	LDR R0, =GPIO_PORTA_AHB_DATA_R
+	MOV R1, #2_11110000
+	STR R1, [R0]
+	
+	LDR R0, =GPIO_PORTQ_DATA_R
+	MOV R1, #2_00001111
+	STR R1, [R0]
+	
+	LDR R0, =GPIO_PORTP_DATA_R
+	MOV R1, #2_00100000
+	STR R1, [R0]
+	
+	MOV R0, #100
+	PUSH {LR}
+	BL SysTick_Wait1ms
+	POP {LR}
+	
+	LDR R0, =GPIO_PORTP_DATA_R
+	MOV R1, #2_00000000
+	STR R1, [R0]
+	
+	PUSH {LR}
+	BL Keyboard_Read
+	POP {LR}
+	
+	LDR R0, =KEYBOARD_DIGIT
+	LDRB R1, [R0]
+	
+	CMP R1, #0
+	BEQ State_5_d_Intermediate
+	
+	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	
+	CMP R1, #'#'
+	BEQ State_5_d_Final	
+
+	LDR R0, =LOGIN_USER_PASSWORD_P1
+	LDRB R2, [R0]
+	CMP R2, #0
+	STRBEQ R1, [R0]
+	BEQ State_5_d_Intermediate
+	
+	LDR R0, =LOGIN_USER_PASSWORD_P2
+	LDRB R2, [R0]
+	CMP R2, #0
+	STRBEQ R1, [R0]
+	BEQ State_5_d_Intermediate
+	
+	LDR R0, =LOGIN_USER_PASSWORD_P3
+	LDRB R2, [R0]
+	CMP R2, #0
+	STRBEQ R1, [R0]
+	BEQ State_5_d_Intermediate
+	
+	LDR R0, =LOGIN_USER_PASSWORD_P4
+	LDRB R2, [R0]
+	CMP R2, #0
+	STRBEQ R1, [R0]
+	BEQ State_5_d_Intermediate
+	
+	B State_5_d_Intermediate
+
+State_5_d_Final
+	LDR R0, =LOGIN_USER_PASSWORD_P1
+	LDRB R1, [R0]
+	
+	LDR R0, =MASTER_PASSWORD_P1
+	LDRB R2, [R0]
+	
+	MOV R3, #0
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P1
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P2
+		STRBNE R3, [R4]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P3
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P4
+		STRBNE R3, [R4]
+		
+	CMP R1, R2
+	BNE State_5_d_Intermediate
+		
+	LDR R0, =LOGIN_USER_PASSWORD_P2
+	LDRB R1, [R0]
+	
+	LDR R0, =MASTER_PASSWORD_P2
+	LDRB R2, [R0]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P1
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P2
+		STRBNE R3, [R4]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P3
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P4
+		STRBNE R3, [R4]
+		
+	CMP R1, R2
+	BNE State_5_d_Intermediate
+
+	
+	LDR R0, =LOGIN_USER_PASSWORD_P3
+	LDRB R1, [R0]
+	
+	LDR R0, =MASTER_PASSWORD_P3
+	LDRB R2, [R0]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P1
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P2
+		STRBNE R3, [R4]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P3
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P4
+		STRBNE R3, [R4]
+		
+	CMP R1, R2
+	BNE State_5_d_Intermediate
+		
+		
+	LDR R0, =LOGIN_USER_PASSWORD_P4
+	LDRB R1, [R0]
+
+	LDR R0, =MASTER_PASSWORD_P4
+	LDRB R2, [R0]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P1
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P2
+		STRBNE R3, [R4]
+	
+	CMP R1, R2
+	ITTTT NE
+		LDRNE R4, =LOGIN_USER_PASSWORD_P3
+		STRBNE R3, [R4]
+		LDRNE R4, =LOGIN_USER_PASSWORD_P4
+		STRBNE R3, [R4]
+		
+	CMP R1, R2
+	BNE State_5_d_Intermediate
+
+
+	LDR R0, =GPIO_PORTP_DATA_R
+	MOV R1, #2_00000000
+	STR R1, [R0]
+
+	LDR R0, =MAIN_STATE
+	MOV R1, #7 ;GOTO_5_C
+	STRB R1, [R0]
+	
+	BX LR
+	
+	ALIGN                           ; garante que o fim da seção está alinhada 
+    END  
