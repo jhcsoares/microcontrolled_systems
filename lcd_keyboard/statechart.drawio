@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" modified="2024-04-29T02:43:48.675Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0" etag="WiIMetpf-0xL8Q585yjI" version="24.3.1" type="device">
+  <diagram name="Page-1" id="J_95haZff-nVAWnaxN8r">
+    <mxGraphModel dx="1730" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-1" target="qK9qToJDl3GBQaCKe6_q-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-1" value="&lt;span id=&quot;docs-internal-guid-59f3592b-7fff-c9df-cbbb-19d2694f21c2&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: “Cofre aberto, digite nova senha para fechar o cofre”&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="130" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-2" target="_bK2OzGPnSI0DBPaxuRB-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-2" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="400" y="30" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-5" target="_bK2OzGPnSI0DBPaxuRB-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-5" value="&lt;span id=&quot;docs-internal-guid-59f3592b-7fff-c9df-cbbb-19d2694f21c2&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: &lt;/span&gt;&lt;span id=&quot;docs-internal-guid-6c4bf1d7-7fff-f938-3a2f-f0fb4740b3ce&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;“Cofre fechando” por 5 segundos&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="312.5" y="400" width="215" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-8" target="_bK2OzGPnSI0DBPaxuRB-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-12" value="Se digitou senha correta" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-11" vertex="1" connectable="0">
+          <mxGeometry x="-0.2936" y="-1" relative="1" as="geometry">
+            <mxPoint x="22" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="419" y="630" as="sourcePoint" />
+            <mxPoint x="419" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-19" value="Se USR_SW2 for pressionado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-18" vertex="1" connectable="0">
+          <mxGeometry x="-0.3014" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-8" target="_bK2OzGPnSI0DBPaxuRB-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-26" value="&lt;div&gt;Se digitar senha&amp;nbsp;&lt;/div&gt;&lt;div&gt;incorretamente 3 vezes&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-25" vertex="1" connectable="0">
+          <mxGeometry x="0.308" y="2" relative="1" as="geometry">
+            <mxPoint x="30" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-8" value="&lt;span id=&quot;docs-internal-guid-6211d3e0-7fff-865d-630a-0e5072d78f76&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: “Cofre fechado”&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="560" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-13" target="_bK2OzGPnSI0DBPaxuRB-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-13" value="&lt;span id=&quot;docs-internal-guid-59f3592b-7fff-c9df-cbbb-19d2694f21c2&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: &lt;/span&gt;&lt;span id=&quot;docs-internal-guid-6c4bf1d7-7fff-f938-3a2f-f0fb4740b3ce&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;“Cofre abrindo” por 5 segundos&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="540" width="215" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-15" target="_bK2OzGPnSI0DBPaxuRB-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-22" value="&lt;div&gt;Digita senha de 4 dígitos&lt;/div&gt;&lt;div&gt;&amp;nbsp;e pressiona #&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-21" vertex="1" connectable="0">
+          <mxGeometry x="0.1261" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-15" value="&lt;span id=&quot;docs-internal-guid-6211d3e0-7fff-865d-630a-0e5072d78f76&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: “Nova senha mestra”&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qK9qToJDl3GBQaCKe6_q-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_bK2OzGPnSI0DBPaxuRB-20" target="_bK2OzGPnSI0DBPaxuRB-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="880" />
+              <mxPoint x="680" y="455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-20" value="Nova senha mestra setada" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-23" target="_bK2OzGPnSI0DBPaxuRB-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-31" value="&lt;div&gt;Se USR_SW1 for&amp;nbsp;&lt;/div&gt;&lt;div&gt;pressionado&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-30" vertex="1" connectable="0">
+          <mxGeometry x="0.2446" y="-1" relative="1" as="geometry">
+            <mxPoint x="23" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-23" value="LCD escreve: &quot;Cofre travado&quot; e leds ficam piscando" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="565" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-28" target="_bK2OzGPnSI0DBPaxuRB-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-34" value="Se senha mestra for correta" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-33" vertex="1" connectable="0">
+          <mxGeometry x="-0.0828" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-28" value="LCD escreve: &quot;Insira a senha mestra&quot;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-250" y="565" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-32" target="_bK2OzGPnSI0DBPaxuRB-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-190" y="950" />
+              <mxPoint x="827" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-32" value="Leds param de piscar" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-250" y="840" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qK9qToJDl3GBQaCKe6_q-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qK9qToJDl3GBQaCKe6_q-1" target="_bK2OzGPnSI0DBPaxuRB-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qK9qToJDl3GBQaCKe6_q-1" value="Espera usuário digitar senha de 4 dígitos e pressionar #" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="300" width="220" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
