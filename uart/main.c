@@ -11,18 +11,21 @@ void GPIO_Init(void);
 void UART_Init(void);
 uint8_t receive_data(void);
 void transmit_data(uint8_t data);
+void change_led_state(uint8_t data);
 
 int main(void)
 {
-	uint8_t recv;
+	uint8_t received_data;
 	PLL_Init();
 	UART_Init();
 	GPIO_Init();
 	while (1)
 	{
-		recv = receive_data();
+		received_data = receive_data();
 		
-		if(recv == '1')
-			transmit_data('a');
+		if(received_data != 0)
+		{
+			change_led_state(received_data);
+		}
 	}
 }

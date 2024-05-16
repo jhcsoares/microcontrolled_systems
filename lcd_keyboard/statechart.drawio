@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-29T02:43:48.675Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0" etag="WiIMetpf-0xL8Q585yjI" version="24.3.1" type="device">
+<mxfile host="app.diagrams.net" modified="2024-05-01T21:10:42.258Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0" etag="mhKls1MiV5c-5FZBlPxh" version="24.3.1" type="device">
   <diagram name="Page-1" id="J_95haZff-nVAWnaxN8r">
-    <mxGraphModel dx="1730" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2204" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -32,23 +32,27 @@
             <mxPoint x="22" y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_bK2OzGPnSI0DBPaxuRB-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="419" y="630" as="sourcePoint" />
-            <mxPoint x="419" y="720" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="_bK2OzGPnSI0DBPaxuRB-19" value="Se USR_SW2 for pressionado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-18" vertex="1" connectable="0">
-          <mxGeometry x="-0.3014" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="_bK2OzGPnSI0DBPaxuRB-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-8" target="_bK2OzGPnSI0DBPaxuRB-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_bK2OzGPnSI0DBPaxuRB-26" value="&lt;div&gt;Se digitar senha&amp;nbsp;&lt;/div&gt;&lt;div&gt;incorretamente 3 vezes&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_bK2OzGPnSI0DBPaxuRB-25" vertex="1" connectable="0">
           <mxGeometry x="0.308" y="2" relative="1" as="geometry">
             <mxPoint x="30" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0s2gPMVXWMg0jpKuCvmI-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_bK2OzGPnSI0DBPaxuRB-8" target="_bK2OzGPnSI0DBPaxuRB-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="578" />
+              <mxPoint x="320" y="530" />
+              <mxPoint x="-20" y="530" />
+              <mxPoint x="-20" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0s2gPMVXWMg0jpKuCvmI-4" value="Se USR_SW2 for pressionado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="0s2gPMVXWMg0jpKuCvmI-3">
+          <mxGeometry x="-0.4721" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_bK2OzGPnSI0DBPaxuRB-8" value="&lt;span id=&quot;docs-internal-guid-6211d3e0-7fff-865d-630a-0e5072d78f76&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: “Cofre fechado”&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -68,19 +72,14 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_bK2OzGPnSI0DBPaxuRB-15" value="&lt;span id=&quot;docs-internal-guid-6211d3e0-7fff-865d-630a-0e5072d78f76&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: “Nova senha mestra”&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="360" y="720" width="120" height="60" as="geometry" />
+        <mxCell id="0s2gPMVXWMg0jpKuCvmI-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_bK2OzGPnSI0DBPaxuRB-15" target="_bK2OzGPnSI0DBPaxuRB-5">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qK9qToJDl3GBQaCKe6_q-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_bK2OzGPnSI0DBPaxuRB-20" target="_bK2OzGPnSI0DBPaxuRB-5">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="680" y="880" />
-              <mxPoint x="680" y="455" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="_bK2OzGPnSI0DBPaxuRB-15" value="&lt;span id=&quot;docs-internal-guid-6211d3e0-7fff-865d-630a-0e5072d78f76&quot; style=&quot;font-size:13pt;font-family:Calibri,sans-serif;color:#333333;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;&quot;&gt;LCD escreve: “Nova senha mestra”&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="300" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="_bK2OzGPnSI0DBPaxuRB-20" value="Nova senha mestra setada" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="360" y="850" width="120" height="60" as="geometry" />
+          <mxGeometry x="30" y="430" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="_bK2OzGPnSI0DBPaxuRB-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="_bK2OzGPnSI0DBPaxuRB-23" target="_bK2OzGPnSI0DBPaxuRB-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -115,10 +114,10 @@
         <mxCell id="_bK2OzGPnSI0DBPaxuRB-32" value="Leds param de piscar" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-250" y="840" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="qK9qToJDl3GBQaCKe6_q-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qK9qToJDl3GBQaCKe6_q-1" target="_bK2OzGPnSI0DBPaxuRB-5">
+        <mxCell id="qK9qToJDl3GBQaCKe6_q-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="qK9qToJDl3GBQaCKe6_q-1" target="_bK2OzGPnSI0DBPaxuRB-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qK9qToJDl3GBQaCKe6_q-1" value="Espera usuário digitar senha de 4 dígitos e pressionar #" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="qK9qToJDl3GBQaCKe6_q-1" value="Espera usuário digitar senha de 4 dígitos e pressionar #" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="310" y="300" width="220" height="60" as="geometry" />
         </mxCell>
       </root>

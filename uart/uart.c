@@ -4,11 +4,10 @@
 
 uint8_t receive_data(void)
 {
-	volatile uint8_t data;
+	uint8_t data = 0;
 	
-	while((UART0_FR_R & 0x10) == 0x10);
-	
-	data = UART0_DR_R;
+	if((UART0_FR_R & 0x10) != 0x10)
+		data = UART0_DR_R;
 	
 	return data;
 }
