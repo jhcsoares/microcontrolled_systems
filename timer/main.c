@@ -52,7 +52,6 @@ void timer_setup()
 	
 	TIMER2_IMR_R = 0x1; //enable interrupt
 	
-	
 	NVIC_PRI5_R = 0x80000000; //priority
 	
 	NVIC_EN0_R = 0x800000; //enable interrupt nvic
