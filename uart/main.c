@@ -36,6 +36,7 @@ int main(void)
 	PLL_Init();
 	SysTick_Init();
 	timer_setup();
+	SysTick_Wait1ms(1000);
 	uart_setup();
 	gpio_setup();
 	interrupt_setup();

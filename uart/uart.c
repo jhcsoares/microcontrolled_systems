@@ -12,9 +12,9 @@ void uart_setup(void)
 	
 	UART0_CTL_R = 0x0;
 	
-	UART0_IBRD_R = 0x56;
+	UART0_IBRD_R = 0x208;
 	
-	UART0_FBRD_R = 0x34;
+	UART0_FBRD_R = 0x35;
 	
 	uint8_t wlen = 0x3 << 5;
 	uint8_t fen = 0x1 << 4;

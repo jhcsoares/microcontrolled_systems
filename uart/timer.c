@@ -19,7 +19,7 @@ void timer_setup(void)
 	
 	TIMER2_TAMR_R = 0x2; //periodic mode
 	
-	TIMER2_TAILR_R = 0x3D08FFF; //timer count
+	TIMER2_TAILR_R = 7999999; //timer count
 	
 	TIMER2_TAPR_R = 0x0; //wont use prescale mode
 	
